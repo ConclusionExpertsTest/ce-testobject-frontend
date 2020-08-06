@@ -1,0 +1,36 @@
+<div *ngIf="observableWorkingConditions" class="user-form-container">
+    <mat-form-field appearance="fill">
+      <mat-label>First name</mat-label>
+      <input matInput value="{{user.firstName}}">
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+      <mat-label>Last name</mat-label>
+      <input matInput value="{{user.lastName}}">
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+      <mat-label>Address</mat-label>
+      <input matInput value="{{user.address}}">
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+      <mat-label>Occupation</mat-label>
+      <input matInput value="{{user.occupation}}">
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+      <mat-label>Working conditions ID</mat-label>
+      <mat-select [(value)]="user.workingConditionsId">
+        <mat-option *ngFor="let wc of observableWorkingConditions | async" [value]="wc.id">{{wc.id}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+      <mat-label>Active</mat-label>
+      <mat-select [(value)]="user.active">
+        <mat-option value="true">true</mat-option>
+        <mat-option value="false">false</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>

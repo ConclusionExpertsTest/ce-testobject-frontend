@@ -1,0 +1,19 @@
+<mat-card class="user-card">
+    <mat-card-header class="user-card-header">
+      <div mat-card-avatar class="user-header-image"></div>
+      <mat-card-title>{{user.firstName}} {{user.lastName}}</mat-card-title>
+      <mat-card-subtitle>{{user.occupation}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+
+            <app-user-list *ngIf="!editMode" [user]="user"></app-user-list>
+            <app-user-form *ngIf="editMode" [user]="user"></app-user-form>
+    
+    </mat-card-content>
+    <mat-card-actions>
+      <button (click)="editMode = true" mat-raised-button>Edit</button>
+      <button (click)="editMode = false" *ngIf="editMode" mat-raised-button color="warn">Delete</button>
+      <button (click)="editMode = false; updateUser(user)" *ngIf="editMode" mat-raised-button>Save</button>
+      <button (click)="editMode = false" *ngIf="editMode" mat-raised-button>Cancel</button>
+    </mat-card-actions>
+  </mat-card>

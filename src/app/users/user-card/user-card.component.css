@@ -1,0 +1,18 @@
+.user-card {
+  max-width: 400px;
+  max-height: fit-content;
+  border: 1px solid gray;
+  left: 30px;
+}
+
+.user-card-header {
+  padding-top: 10px;
+  background-color: #c5cae9;
+  padding-bottom: 10px;
+}
+
+.user-header-image {
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/User_font_awesome.svg/1200px-User_font_awesome.svg.png');
+  background-size: cover;
+  padding-left: 15px;
+}

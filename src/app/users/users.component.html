@@ -1,1 +1,11 @@
-<p>users works!</p>
+<h2>Conclusion Experts Users</h2>
+
+<div *ngIf="usersObservable | async as usersObservable else empty">
+    <div *ngFor="let user of usersObservable" class="user-div">
+
+        <app-user-card [user]="user"></app-user-card>
+        
+    </div>
+</div>
+    
+    <ng-template #empty> No users found - dit you start the users-application backend? </ng-template>
