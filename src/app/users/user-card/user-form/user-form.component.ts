@@ -1,14 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { User } from '../../users.component';
+import { User } from '../../user';
+import { WorkingConditionsService, WorkingCondition } from '../../../working-conditions/working-conditions.service';
 import { Observable } from  "rxjs";
-import { HttpClient } from '@angular/common/http';
-
-export class WorkingConditions {
-  id: number;
-  salaryGroup: string;
-  companyCar: boolean;
-  companyLaptop: string;
-}
 
 @Component({
   selector: 'app-user-form',
@@ -19,14 +12,13 @@ export class UserFormComponent implements OnInit {
 
   @Input() user: User;
 
-  observableWorkingConditions : Observable<WorkingConditions[]>;
+  observableWorkingConditions : Observable<WorkingCondition[]>;
 
-  constructor(private httpclient: HttpClient) { }
+  constructor(private workingConditionsService: WorkingConditionsService) { }
 
   ngOnInit(): void {
 
-    this.observableWorkingConditions = this.httpclient
-    .get<WorkingConditions[]>("http://localhost:8083/api/workingconditions/");
+    this.observableWorkingConditions = this.workingConditionsService.getWorkingconditions();
 
     console.log(this.observableWorkingConditions); 
 

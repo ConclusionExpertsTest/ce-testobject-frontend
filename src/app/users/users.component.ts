@@ -1,16 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from  "rxjs";
-import { HttpClient } from  "@angular/common/http";
-
-export class User {
-  id: number; 
-  firstName: string;
-  lastName: string;
-  address: string;
-  occupation: string;
-  workingConditionsId: number;
-  active: boolean;
-}
+import { UsersService } from './users-service.service';
+import { User } from './user';
 
 @Component({
   selector: 'app-users',
@@ -21,15 +12,13 @@ export class UsersComponent implements OnInit {
 
   usersObservable : Observable<User[]>;
 
-  constructor(private httpclient: HttpClient) { }
+  constructor(private usersService: UsersService) { }
 
   ngOnInit(): void {
 
-    this.usersObservable = this.httpclient
-    .get<User[]>("http://localhost:8082/api/users/");
+    this.usersObservable = this.usersService.getUsers();
 
     console.log(this.usersObservable);
-    
   }
 
 }

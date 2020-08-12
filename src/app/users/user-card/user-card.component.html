@@ -13,7 +13,7 @@
     <mat-card-actions>
       <button (click)="editMode = true" mat-raised-button>Edit</button>
       <button (click)="editMode = false" *ngIf="editMode" mat-raised-button color="warn">Delete</button>
-      <button (click)="editMode = false; updateUser(user)" *ngIf="editMode" mat-raised-button>Save</button>
+      <button (click)="editMode = false" *ngIf="editMode" mat-raised-button>Save</button>
       <button (click)="editMode = false" *ngIf="editMode" mat-raised-button>Cancel</button>
     </mat-card-actions>
   </mat-card>
