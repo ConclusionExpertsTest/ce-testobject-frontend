@@ -1,11 +1,15 @@
-<h2>Conclusion Experts Users</h2>
+<button (click)="newMode = true" *ngIf="!newMode" mat-raised-button class="new-user-button">+ Create new user</button>
+
+<div class="user-div">
+    <app-new-user-card *ngIf="newMode"></app-new-user-card>
+</div>
 
 <div *ngIf="usersObservable | async as usersObservable else empty">
     <div *ngFor="let user of usersObservable" class="user-div">
 
         <app-user-card [user]="user"></app-user-card>
-        
+
     </div>
 </div>
-    
-    <ng-template #empty> No users found - dit you start the users-application backend? </ng-template>
+
+<ng-template #empty> No users found - dit you start the users-application backend? </ng-template>
