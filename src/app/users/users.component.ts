@@ -10,15 +10,14 @@ import { User } from './user';
 })
 export class UsersComponent implements OnInit {
 
+  newMode: boolean = false;
+
   usersObservable : Observable<User[]>;
 
-  constructor(private usersService: UsersService) { }
+  constructor(private usersService: UsersService) {  }
 
   ngOnInit(): void {
-
-    this.usersObservable = this.usersService.getUsers();
-
-    console.log(this.usersObservable);
+    this.usersObservable = this.usersService.getAll();
   }
 
 }

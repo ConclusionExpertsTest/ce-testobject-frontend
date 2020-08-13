@@ -1,24 +1,17 @@
 <mat-card class="user-card">
-  <mat-card-header class="user-card-header">
+  <mat-card-header *ngIf="newMode" class="user-card-header">
     <div mat-card-avatar class="user-header-image"></div>
-    <mat-card-title>{{user.firstName}} {{user.lastName}}</mat-card-title>
-    <mat-card-subtitle>{{user.occupation}}</mat-card-subtitle>
+    <mat-card-title>New User</mat-card-title>
   </mat-card-header>
-  <button class="detail-button" (click)="viewDetails = true" *ngIf="!viewDetails" mat-raised-button>Show
-    details</button>
-  <button class="detail-button" (click)="viewDetails = false" *ngIf="viewDetails && !editMode" mat-raised-button>Hide
-    details</button>
-  <mat-card-content class="mat-card-content">
+  <mat-card-content *ngIf="newMode" class="mat-card-content">
 
-    <app-user-list *ngIf="!editMode && viewDetails" [user]="user"></app-user-list>
-    
-    <div *ngIf="observableWorkingConditions && editMode && viewDetails" class="user-form-container">
+    <div *ngIf="observableWorkingConditions" class="user-form-container">
 
       <form [formGroup]="userForm">
 
         <mat-form-field appearance="fill">
           <mat-label for="firstName">First name</mat-label>
-          <input id="firstName" required matInput formControlName="firstName" value="{{user.firstName}}">
+          <input id="firstName" required matInput formControlName="firstName">
           <mat-error>
             Firstname is <strong>required</strong>
           </mat-error>
@@ -28,7 +21,7 @@
 
         <mat-form-field appearance="fill">
           <mat-label for="lastName">Last name</mat-label>
-          <input id="lastName" required matInput class="form-control" formControlName="lastName" value="{{user.lastName}}">
+          <input id="lastName" required matInput class="form-control" formControlName="lastName">
           <mat-error>
             Lastname is <strong>required</strong>
           </mat-error>
@@ -38,7 +31,7 @@
 
         <mat-form-field appearance="fill">
           <mat-label for="address">Address</mat-label>
-          <input id="address" required matInput class="form-control" formControlName="address" value="{{user.address}}">
+          <input id="address" required matInput class="form-control" formControlName="address">
           <mat-error>
             Address is <strong>required</strong>
           </mat-error>
@@ -48,7 +41,7 @@
 
         <mat-form-field appearance="fill">
           <mat-label for="occupation">Occupation</mat-label>
-          <input id="occupation" required matInput class="form-control" formControlName="occupation" value="{{user.occupation}}">
+          <input id="occupation" required matInput class="form-control" formControlName="occupation">
           <mat-error>
             Occupation is <strong>required</strong>
           </mat-error>
@@ -57,7 +50,7 @@
 
         <mat-form-field appearance="fill">
           <mat-label for="workingConditionsId">Working conditions ID</mat-label>
-          <mat-select required id="workingConditionsId" class="form-control" formControlName="workingConditionsId" value="{{user.workingConditionsId}}">
+          <mat-select required id="workingConditionsId" class="form-control" formControlName="workingConditionsId">
             <mat-option *ngFor="let wc of observableWorkingConditions | async" [value]="wc.id">{{wc.id}}</mat-option>
           </mat-select>
           <mat-error>
@@ -69,7 +62,7 @@
 
         <mat-form-field appearance="fill">
           <mat-label for="active">Active</mat-label>
-          <mat-select required id="active" class="form-control" formControlName="active" [(value)]="user.active">
+          <mat-select required id="active" class="form-control" formControlName="active">
             <mat-option value="true">true</mat-option>
             <mat-option value="false">false</mat-option>
           </mat-select>
@@ -84,9 +77,9 @@
 
   </mat-card-content>
   <mat-card-actions>
-    <button (click)="editMode = true" *ngIf="!editMode && viewDetails" mat-raised-button>Edit</button>
-    <button (click)="deleteUser()" *ngIf="editMode && viewDetails" mat-raised-button color="warn">Delete</button>
-    <button (click)="updateUser()" *ngIf="editMode && viewDetails" mat-raised-button>Save</button>
-    <button (click)="editMode = false" *ngIf="editMode && viewDetails" mat-raised-button>Cancel</button>
+    <button *ngIf="!newMode" (click)="addAnother()" mat-raised-button> + Add another user </button>
+    <button *ngIf="!newMode" (click)="doneAdding()" mat-raised-button> Done </button>
+    <button *ngIf="newMode" (click)="addUser()" mat-raised-button>Save</button>
+    <button *ngIf="newMode" (click)="cancel()" mat-raised-button>Cancel</button>
   </mat-card-actions>
 </mat-card>

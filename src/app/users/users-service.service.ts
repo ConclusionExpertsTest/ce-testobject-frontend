@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { throwError, Observable } from 'rxjs';
-import { tap, catchError, map} from 'rxjs/operators';
-import { User } from '../users/user';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({ 
   providedIn: 'root'
@@ -11,22 +9,25 @@ export class UsersService {
 
   BASE_URL = 'http://localhost:8082/api/users/';
 
-  headers = new HttpHeaders().set('Content-Type', 'application/json').set('Accept', '*/*');
-  httpOptions = {
-    headers: this.headers
-  };
-
   constructor(private httpclient: HttpClient) { }
 
-  private handleError(error: any) {
-    console.log(error);
-    return throwError(error);
+  getAll(): Observable<any> {
+    return this.httpclient.get(this.BASE_URL);
   }
 
-  getUsers(): Observable<User[]> {
-    return this.httpclient.get<User[]>(this.BASE_URL).pipe(
-      tap(data => console.log(data)),
-      catchError(this.handleError)
-    );
+  get(id): Observable<any> {
+    return this.httpclient.get(`${this.BASE_URL}/${id}`);
+  }
+
+  create(data): Observable<any> {
+    return this.httpclient.post(this.BASE_URL, data);
+  }
+
+  update(id, data): Observable<any> {
+    return this.httpclient.put(`${this.BASE_URL}/${id}`, data);
+  }
+
+  delete(id): Observable<any> {
+    return this.httpclient.delete(`${this.BASE_URL}/${id}`);
   }
 }
