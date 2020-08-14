@@ -1,32 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { throwError, Observable } from 'rxjs';
-import { tap, catchError, map} from 'rxjs/operators';
-
-export class WorkingCondition {
-  id: number; 
-  salaryGroup: string;
-  companyCar: boolean;
-  companyLaptop: string;
-}
-
-export class SalaryGroup {
-  id: number; 
-  salaryGroupCode: string;
-  minAmount: number;
-  maxAmount: number;
-}
-
-export class CompanyLaptop {
-  id: number; 
-  companyLaptopTypes: string;
-  available: boolean;
-  brandAndType: string;
-  memory: string;
-  diskspace: string;
-  firstOperatingSystem: string;
-  secondOperatingSystem: string;
-}
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -35,22 +9,55 @@ export class WorkingConditionsService {
 
   BASE_URL = 'http://localhost:8083/api/workingconditions/';
 
-  headers = new HttpHeaders().set('Content-Type', 'application/json').set('Accept', '*/*');
-  httpOptions = {
-    headers: this.headers
-  };
-
   constructor(private httpclient: HttpClient) { }
 
-  private handleError(error: any) {
-    console.log(error);
-    return throwError(error);
+  // Working conditions
+
+  getWorkingconditions(): Observable<any> {
+    return this.httpclient.get(this.BASE_URL);
   }
 
-  getWorkingconditions(): Observable<WorkingCondition[]> {
-    return this.httpclient.get<WorkingCondition[]>(this.BASE_URL).pipe(
-      tap(data => console.log(data)),
-      catchError(this.handleError)
-    );
+  getWorkingcondition(id): Observable<any> {
+    return this.httpclient.get(`${this.BASE_URL}/${id}`);
+  }
+
+  createWorkingcondition(data): Observable<any> {
+    return this.httpclient.post(this.BASE_URL, data);
+  }
+
+  updateWorkingcondition(id, data): Observable<any> {
+    return this.httpclient.put(`${this.BASE_URL}/${id}`, data);
+  }
+
+  deleteWorkingcondition(id): Observable<any> {
+    return this.httpclient.delete(`${this.BASE_URL}/${id}`);
+  }
+
+  // Salary groups
+
+  getAllSalaryGroups(): Observable<any> {
+    return this.httpclient.get(`${this.BASE_URL}/salarygroups/`);
+  }
+
+  getSalaryGroup(id): Observable<any> {
+    return this.httpclient.get(`${this.BASE_URL}/salarygroups/${id}`);
+  }
+
+  updateSalaryGroup(id, data): Observable<any> {
+    return this.httpclient.put(`${this.BASE_URL}/salarygroups/${id}`, data);
+  }
+
+  // Company laptops
+
+  getAllCompanyLaptops(): Observable<any> {
+    return this.httpclient.get(`${this.BASE_URL}/companylaptop/`);
+  }
+
+  getCompanyLaptop(id): Observable<any> {
+    return this.httpclient.get(`${this.BASE_URL}/companylaptop/${id}`);
+  }
+
+  updateCompanyLaptop(id, data): Observable<any> {
+    return this.httpclient.put(`${this.BASE_URL}/companylaptop/${id}`, data);
   }
 }

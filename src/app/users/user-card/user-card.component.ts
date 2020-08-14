@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { User } from '../user';
-import { WorkingConditionsService, WorkingCondition } from 'src/app/working-conditions/working-conditions.service';
+import { WorkingConditionsService } from 'src/app/working-conditions/working-conditions.service';
+import { WorkingCondition } from '../../working-conditions/classes/workingcondition';
 import { Observable } from 'rxjs';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UsersService } from '../users-service.service';
@@ -19,6 +20,7 @@ export class UserCardComponent implements OnInit {
 
   viewDetails: boolean = false;
   editMode: boolean = false;
+  allDetailsMode: boolean = false;
 
   @Input() user: User;
 
@@ -29,7 +31,7 @@ export class UserCardComponent implements OnInit {
 
   ngOnInit(): void {
     this.observableWorkingConditions = this.workingConditionsService.getWorkingconditions();
-
+    
     this.userForm = this.fb.group({
       firstName: [this.user.firstName, [Validators.required]],
       lastName: [this.user.lastName, [Validators.required]],

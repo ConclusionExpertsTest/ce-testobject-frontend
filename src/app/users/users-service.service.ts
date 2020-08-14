@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class UsersService {
 
-  BASE_URL = 'http://localhost:8082/api/users/';
+  BASE_URL = 'http://localhost:8082/api/users/'; 
 
   constructor(private httpclient: HttpClient) { }
 

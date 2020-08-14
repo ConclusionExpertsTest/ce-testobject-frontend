@@ -4,14 +4,14 @@
     <mat-card-title>{{user.firstName}} {{user.lastName}}</mat-card-title>
     <mat-card-subtitle>{{user.occupation}}</mat-card-subtitle>
   </mat-card-header>
-  <button class="detail-button" (click)="viewDetails = true" *ngIf="!viewDetails" mat-raised-button>Show
+  <button class="detail-button" (click)="viewDetails = true" *ngIf="!viewDetails" mat-stroked-button>Show
     details</button>
-  <button class="detail-button" (click)="viewDetails = false" *ngIf="viewDetails && !editMode" mat-raised-button>Hide
+  <button class="detail-button" (click)="viewDetails = false; allDetailsMode = false" *ngIf="viewDetails && !editMode" mat-stroked-button>Hide
     details</button>
   <mat-card-content class="mat-card-content">
 
     <app-user-list *ngIf="!editMode && viewDetails" [user]="user"></app-user-list>
-    
+
     <div *ngIf="observableWorkingConditions && editMode && viewDetails" class="user-form-container">
 
       <form [formGroup]="userForm">
@@ -28,7 +28,8 @@
 
         <mat-form-field appearance="fill">
           <mat-label for="lastName">Last name</mat-label>
-          <input id="lastName" required matInput class="form-control" formControlName="lastName" value="{{user.lastName}}">
+          <input id="lastName" required matInput class="form-control" formControlName="lastName"
+            value="{{user.lastName}}">
           <mat-error>
             Lastname is <strong>required</strong>
           </mat-error>
@@ -48,7 +49,8 @@
 
         <mat-form-field appearance="fill">
           <mat-label for="occupation">Occupation</mat-label>
-          <input id="occupation" required matInput class="form-control" formControlName="occupation" value="{{user.occupation}}">
+          <input id="occupation" required matInput class="form-control" formControlName="occupation"
+            value="{{user.occupation}}">
           <mat-error>
             Occupation is <strong>required</strong>
           </mat-error>
@@ -57,7 +59,8 @@
 
         <mat-form-field appearance="fill">
           <mat-label for="workingConditionsId">Working conditions ID</mat-label>
-          <mat-select required id="workingConditionsId" class="form-control" formControlName="workingConditionsId" value="{{user.workingConditionsId}}">
+          <mat-select required id="workingConditionsId" class="form-control" formControlName="workingConditionsId"
+            value="{{user.workingConditionsId}}">
             <mat-option *ngFor="let wc of observableWorkingConditions | async" [value]="wc.id">{{wc.id}}</mat-option>
           </mat-select>
           <mat-error>
@@ -82,11 +85,16 @@
 
     </div>
 
+    <button mat-stroked-button (click)="allDetailsMode = true" class="detail-button" *ngIf="!editMode && viewDetails && !allDetailsMode">Show more details ...</button>
+    <button mat-stroked-button (click)="allDetailsMode = false" class="detail-button" *ngIf="!editMode && viewDetails && allDetailsMode">Hide more details ...</button>
+
+    <app-details *ngIf="allDetailsMode" class="user-form-container" [user]="user"></app-details>
+
   </mat-card-content>
   <mat-card-actions>
-    <button (click)="editMode = true" *ngIf="!editMode && viewDetails" mat-raised-button>Edit</button>
-    <button (click)="deleteUser()" *ngIf="editMode && viewDetails" mat-raised-button color="warn">Delete</button>
-    <button (click)="updateUser()" *ngIf="editMode && viewDetails" mat-raised-button>Save</button>
-    <button (click)="editMode = false" *ngIf="editMode && viewDetails" mat-raised-button>Cancel</button>
+    <button (click)="editMode = true" *ngIf="!editMode && viewDetails && !allDetailsMode" mat-raised-button>Edit</button>
+    <button (click)="deleteUser()" *ngIf="editMode && viewDetails && !allDetailsMode" mat-raised-button color="warn">Delete</button>
+    <button (click)="updateUser()" *ngIf="editMode && viewDetails && !allDetailsMode" mat-raised-button>Save</button>
+    <button (click)="editMode = false" *ngIf="editMode && viewDetails && !allDetailsMode" mat-raised-button>Cancel</button>
   </mat-card-actions>
 </mat-card>
