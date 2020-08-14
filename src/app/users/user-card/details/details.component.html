@@ -1,0 +1,51 @@
+<div *ngIf="observableWorkingConditions | async as observableWorkingConditions else empty"
+    class="workingconditions-container">
+
+    <div *ngFor="let workingCondition of observableWorkingConditions">
+
+        <div *ngIf="workingCondition.id == user.workingConditionsId">
+
+            <!--Company laptop part-->
+            <div *ngIf="observableCompanyLaptop | async as observableCompanyLaptop else empty">
+
+                <div *ngFor="let companyLaptop of observableCompanyLaptop">
+
+                    <div class="company-laptop-container" *ngIf="companyLaptop.companyLaptopTypes == workingCondition.companyLaptop">
+                        
+                        <app-companylaptop-card [companyLaptop]="companyLaptop"></app-companylaptop-card>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <ng-template #empty> No company laptops found - dit you start the working-conditions-application backend?
+            </ng-template>
+
+            <!--Salary group part-->
+            <div *ngIf="observableSalaryGroup | async as observableSalaryGroup else empty">
+
+                <div *ngFor="let salaryGroup of observableSalaryGroup">
+
+                    <div class="salary-group-container" *ngIf="salaryGroup.salaryGroupCode == workingCondition.salaryGroup">
+                        
+                        <app-salarygroup-card [salaryGroup]="salaryGroup"></app-salarygroup-card>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <ng-template #empty> No salarygroups found - dit you start the working-conditions-application backend?
+            </ng-template>
+
+        </div>
+
+    </div>
+
+</div>
+
+<ng-template #empty> No working conditions found - dit you start the working-conditions-application backend?
+</ng-template>

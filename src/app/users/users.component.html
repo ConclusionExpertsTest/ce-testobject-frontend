@@ -5,7 +5,7 @@
 </div>
 
 <div *ngIf="usersObservable | async as usersObservable else empty">
-    <div *ngFor="let user of usersObservable" class="user-div">
+    <div *ngFor="let user of usersObservable" class="user-div"> 
 
         <app-user-card [user]="user"></app-user-card>
 

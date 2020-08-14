@@ -20,6 +20,9 @@ import { MatListModule } from '@angular/material/list';
 import { UserListComponent } from './users/user-card/user-list/user-list.component';
 import { NewUserCardComponent } from './users/new-user-card/new-user-card.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DetailsComponent } from './users/user-card/details/details.component';
+import { CompanylaptopCardComponent } from './users/user-card/details/companylaptop-card/companylaptop-card.component';
+import { SalarygroupCardComponent } from './users/user-card/details/salarygroup-card/salarygroup-card.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +32,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     UserCardComponent,
     UserListComponent,
     NewUserCardComponent,
+    DetailsComponent,
+    CompanylaptopCardComponent,
+    SalarygroupCardComponent,
   ],
   imports: [
     BrowserModule,

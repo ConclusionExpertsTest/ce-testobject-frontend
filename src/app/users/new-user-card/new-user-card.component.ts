@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../users-service.service';
 import { Observable } from 'rxjs';
-import { WorkingCondition, WorkingConditionsService } from 'src/app/working-conditions/working-conditions.service';
+import { WorkingConditionsService } from 'src/app/working-conditions/working-conditions.service';
+import { WorkingCondition } from 'src/app/working-conditions/classes/workingcondition';
 import { User } from '../user';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UsersComponent } from '../users.component';

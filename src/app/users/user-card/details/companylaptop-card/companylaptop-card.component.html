@@ -1,0 +1,32 @@
+<mat-card class="companylaptop-card">
+    <mat-card-header class="companylaptop-card-header">
+        <mat-card-title>{{companyLaptop.brandAndType}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="mat-card-content">
+        <mat-list role="list">
+            <label>Laptop type: 
+                <mat-list-item role="listitem">{{companyLaptop.companyLaptopTypes}}</mat-list-item>
+            </label>
+            <label>Brand and model: 
+                <mat-list-item role="listitem">{{companyLaptop.brandAndType}}</mat-list-item>
+            </label>
+            <label>RAM: 
+                <mat-list-item role="listitem">{{companyLaptop.memory}}</mat-list-item>
+            </label>
+            <label>Diskspace: 
+                <mat-list-item role="listitem">{{companyLaptop.diskspace}}</mat-list-item>
+            </label>
+            <label>First operating system: 
+                <mat-list-item role="listitem">{{companyLaptop.firstOperatingSystem}}</mat-list-item>
+            </label>
+            <label>Second operating system: 
+                <mat-list-item role="listitem">{{companyLaptop.secondOperatingSystem}}</mat-list-item>
+            </label>
+            <label>Available: 
+                <mat-list-item role="listitem">{{companyLaptop.available}}</mat-list-item>
+            </label>
+          </mat-list>
+    </mat-card-content>
+    <mat-card-actions>
+    </mat-card-actions>
+</mat-card>
