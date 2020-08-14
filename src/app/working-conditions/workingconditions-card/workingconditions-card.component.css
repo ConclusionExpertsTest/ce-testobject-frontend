@@ -1,0 +1,27 @@
+.workingcondition-card {
+    max-width: 400px;
+    max-height: fit-content;
+    border: 1px solid gray;
+    left: 30px;
+  }
+  
+  .workingcondition-card-header {
+    padding-top: 10px;
+    background-color: #c5cae9;
+    padding-bottom: 10px;
+  }
+  
+  .mat-card-content {
+    padding-top: 15px;  
+  }
+  
+  .workingcondition-header-image {
+    background-image: url('https://static.thenounproject.com/png/2017700-200.png');
+    background-size: cover;
+    padding-left: 15px;
+  }
+  
+  .detail-button {
+    top: 15px;  
+    width: 400px;
+  }

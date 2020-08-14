@@ -1,1 +1,62 @@
-<p>working-conditions works!</p>
+<mat-tab-group mat-align-tabs="start">
+
+    <mat-tab label="Working conditions"> 
+
+            <div *ngIf="observableWorkingConditions | async as observableWorkingConditions else empty"
+                class="working-conditions-container">
+
+                <div *ngFor="let workingCondition of observableWorkingConditions">
+
+                    <app-workingconditions-card [workingCondition]="workingCondition" [observableSalaryGroup]="observableSalaryGroup" [observableCompanyLaptops]="observableCompanyLaptops"></app-workingconditions-card>
+
+                </div>
+
+            </div>
+
+            <ng-template #empty> No working conditions found - dit you start the working-conditions-application backend?
+            </ng-template>
+
+    </mat-tab>
+
+    <mat-tab label="Company laptops"> 
+
+            <div *ngIf="observableCompanyLaptop | async as observableCompanyLaptop else empty" class="company-laptops-container">
+        
+                <div *ngFor="let companyLaptop of observableCompanyLaptop">
+        
+                    <p>{{companyLaptop.id}}</p>
+        
+                </div>
+        
+            </div>
+
+            <ng-template #empty> No company laptops found - dit you start the working-conditions-application backend?</ng-template>
+    
+    </mat-tab>
+
+    <mat-tab label="Salary groups"> 
+
+            <div *ngIf="observableSalaryGroup | async as observableSalaryGroup else empty" class="salary-groups-container">
+
+                <div *ngFor="let salaryGroup of observableSalaryGroup">
+
+                    <p>{{salaryGroup.id}}</p>
+
+                </div>
+        
+            </div>
+
+            <ng-template #empty> No salarygroups found - dit you start the working-conditions-application backend?</ng-template>
+        
+    </mat-tab>
+
+  </mat-tab-group>
+
+
+
+
+
+
+
+
+

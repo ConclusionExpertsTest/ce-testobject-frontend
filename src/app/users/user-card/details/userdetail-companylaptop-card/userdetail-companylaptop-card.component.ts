@@ -2,11 +2,11 @@ import { Component, OnInit, Input } from '@angular/core';
 import { CompanyLaptop } from 'src/app/working-conditions/classes/companylaptop';
 
 @Component({
-  selector: 'app-companylaptop-card',
-  templateUrl: './companylaptop-card.component.html',
-  styleUrls: ['./companylaptop-card.component.css']
+  selector: 'app-userdetail-companylaptop-card',
+  templateUrl: './userdetail-companylaptop-card.component.html',
+  styleUrls: ['./userdetail-companylaptop-card.component.css']
 })
-export class CompanylaptopCardComponent implements OnInit {
+export class UserdetailCompanylaptopCardComponent implements OnInit {
 
   @Input() companyLaptop: CompanyLaptop;
 

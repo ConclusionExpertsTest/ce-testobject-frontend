@@ -1,15 +1,79 @@
-<button (click)="newMode = true" *ngIf="!newMode" mat-raised-button class="new-user-button">+ Create new user</button>
+<mat-tab-group mat-align-tabs="start">
+    <mat-tab label="All users">
 
-<div class="user-div">
-    <app-new-user-card *ngIf="newMode"></app-new-user-card>
-</div>
+        <button (click)="refresh()" mat-icon-button color="primary" aria-label="Refresh table content">
+            <mat-icon>refresh</mat-icon>
+          </button>
 
-<div *ngIf="usersObservable | async as usersObservable else empty">
-    <div *ngFor="let user of usersObservable" class="user-div"> 
+        <mat-table class="lessons-table mat-elevation-z8" [dataSource]="users">
 
-        <app-user-card [user]="user"></app-user-card>
+            <ng-container matColumnDef="id">
+                <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+                <mat-cell *matCellDef="let user">{{user.id}}</mat-cell>
+            </ng-container>
+        
+            <ng-container matColumnDef="firstName">
+                <mat-header-cell *matHeaderCellDef>First name</mat-header-cell>
+                <mat-cell class="description-cell"
+                          *matCellDef="let user">{{user.firstName}}</mat-cell>
+        
+            </ng-container>
+        
+            <ng-container matColumnDef="lastName">
+                <mat-header-cell *matHeaderCellDef>Last name</mat-header-cell>
+                <mat-cell class="duration-cell"
+                          *matCellDef="let user">{{user.lastName}}</mat-cell>
+            </ng-container>
+        
+            <ng-container matColumnDef="address">
+                <mat-header-cell *matHeaderCellDef>Address</mat-header-cell>
+                <mat-cell class="duration-cell"
+                          *matCellDef="let user">{{user.address}}</mat-cell>
+            </ng-container>
+        
+            <ng-container matColumnDef="occupation">
+                <mat-header-cell *matHeaderCellDef>Occupation</mat-header-cell>
+                <mat-cell class="duration-cell"
+                          *matCellDef="let user">{{user.occupation}}</mat-cell>
+            </ng-container>
+        
+            <ng-container matColumnDef="workingConditionsId">
+                <mat-header-cell *matHeaderCellDef>Working conditions ID</mat-header-cell>
+                <mat-cell class="duration-cell"
+                          *matCellDef="let user">{{user.workingConditionsId}}</mat-cell>
+            </ng-container>
+        
+            <ng-container matColumnDef="active">
+                <mat-header-cell *matHeaderCellDef>Active</mat-header-cell>
+                <mat-cell class="duration-cell"
+                          *matCellDef="let user">{{user.active}}</mat-cell>
+            </ng-container>
+        
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        
+            <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+        
+        </mat-table>
 
-    </div>
-</div>
+    </mat-tab>
+    <mat-tab label="View, edit or add users">
 
-<ng-template #empty> No users found - dit you start the users-application backend? </ng-template>
+        <button (click)="newMode = true" *ngIf="!newMode" mat-raised-button class="new-user-button">+ Create new
+            user</button>
+
+        <div class="user-div">
+            <app-new-user-card *ngIf="newMode"></app-new-user-card>
+        </div>
+
+        <div *ngIf="usersObservable | async as usersObservable else empty">
+            <div *ngFor="let user of usersObservable" class="user-div">
+
+                <app-user-card [user]="user"></app-user-card>
+
+            </div>
+        </div>
+
+        <ng-template #empty> No users found - dit you start the users-application backend? </ng-template>
+
+    </mat-tab>
+</mat-tab-group>

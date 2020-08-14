@@ -10,7 +10,11 @@ import { User } from './user';
 })
 export class UsersComponent implements OnInit {
 
+  displayedColumns = ["id", "firstName", "lastName", "address", "occupation", "workingConditionsId", "active"]; 
+
   newMode: boolean = false;
+
+  users : User[];
 
   usersObservable : Observable<User[]>;
 
@@ -18,6 +22,14 @@ export class UsersComponent implements OnInit {
 
   ngOnInit(): void {
     this.usersObservable = this.usersService.getAll();
+
+    this.usersObservable.subscribe((usersInObs:User[]) => {
+      this.users = usersInObs;
+    });
+  }
+
+  refresh(): void {
+    this.ngOnInit();
   }
 
 }
