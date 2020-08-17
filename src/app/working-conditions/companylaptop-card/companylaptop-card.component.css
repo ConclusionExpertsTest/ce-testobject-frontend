@@ -1,0 +1,27 @@
+.companylaptop-card {
+    max-width: 400px;
+    max-height: fit-content;
+    border: 1px solid gray;
+    left: 30px;
+  }
+  
+  .companylaptop-card-header {
+    padding-top: 10px;
+    background-color: #c5cae9;
+    padding-bottom: 10px;
+  }
+  
+  .mat-card-content {
+    padding-top: 15px;  
+  }
+  
+  .companylaptop-header-image {
+    background-image: url('https://images.vexels.com/media/users/3/157345/isolated/preview/934008c8466ce089e15947cec0a7c61d-flat-laptop-icon-laptop-by-vexels.png');
+    background-size: cover;
+    padding-left: 15px;
+  }
+  
+  .detail-button {
+    top: 15px;  
+    width: 400px;
+  }

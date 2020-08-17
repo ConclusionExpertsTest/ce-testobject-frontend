@@ -1,0 +1,127 @@
+<mat-card class="companylaptop-card">
+    <mat-card-header class="companylaptop-card-header">
+        <div mat-card-avatar class="companylaptop-header-image"></div>
+        <mat-card-title>Company laptop '{{companyLaptop.companyLaptopTypes}}'</mat-card-title>
+        <mat-card-subtitle>subtitle</mat-card-subtitle>
+    </mat-card-header>
+    <button class="detail-button" (click)="viewDetails = true" *ngIf="!viewDetails" mat-stroked-button>Show
+        details</button>
+    <button class="detail-button" (click)="viewDetails = false" *ngIf="viewDetails && !editMode" mat-stroked-button>Hide
+        details</button>
+    <mat-card-content class="mat-card-content">
+
+        <div *ngIf="viewDetails && !editMode" class="companylaptop-list-container">
+
+            <mat-list role="list">
+                <label>ID:
+                    <mat-list-item role="listitem">{{companyLaptop.id}}</mat-list-item>
+                </label>
+                <label>Company laptop type:
+                    <mat-list-item role="listitem">{{companyLaptop.companyLaptopTypes}}</mat-list-item>
+                </label>
+                <label>Available:
+                    <mat-list-item role="listitem">{{companyLaptop.available}}</mat-list-item>
+                </label>
+                <label>Brand and type:
+                    <mat-list-item role="listitem">{{companyLaptop.brandAndType}}</mat-list-item>
+                </label>
+                <label>Memory (RAM):
+                    <mat-list-item role="listitem">{{companyLaptop.memory}}</mat-list-item>
+                </label>
+                <label>Diskspace:
+                    <mat-list-item role="listitem">{{companyLaptop.diskspace}}</mat-list-item>
+                </label>
+                <label>First operating system:
+                    <mat-list-item role="listitem">{{companyLaptop.firstOperatingSystem}}</mat-list-item>
+                </label>
+                <label>Second operating system:
+                    <mat-list-item role="listitem">{{companyLaptop.secondOperatingSystem}}</mat-list-item>
+                </label>
+            </mat-list>
+
+        </div>
+        <div *ngIf="viewDetails && editMode" class="workingcondition-form-container">
+
+            <form [formGroup]="companyLaptopForm">
+
+                <mat-form-field appearance="fill">
+                    <mat-label for="available">Available</mat-label>
+                    <mat-select required id="available" class="form-control" formControlName="available"
+                        [(value)]="companyLaptop.available">
+                        <mat-option value="true">true</mat-option>
+                        <mat-option value="false">false</mat-option>
+                    </mat-select>
+                    <mat-error>
+                        Select <strong>true</strong> or <strong>false</strong>
+                    </mat-error>
+                </mat-form-field>
+
+                <br>
+
+                <mat-form-field appearance="fill">
+                    <mat-label for="brandAndType">Brand and type</mat-label>
+                    <input id="brandAndType" required matInput class="form-control" formControlName="brandAndType"
+                        value="{{companyLaptop.brandAndType}}">
+                    <mat-error>
+                        Brand and type is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+
+                <br>
+
+                <mat-form-field appearance="fill">
+                    <mat-label for="memory">Memory</mat-label>
+                    <input id="memory" required matInput class="form-control" formControlName="memory"
+                        value="{{companyLaptop.memory}}">
+                    <mat-error>
+                        Memory is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+
+                <br>
+
+                <mat-form-field appearance="fill">
+                    <mat-label for="diskspace">Diskspace</mat-label>
+                    <input id="diskspace" required matInput class="form-control" formControlName="diskspace"
+                        value="{{companyLaptop.diskspace}}">
+                    <mat-error>
+                        Diskspace is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+
+                <br>
+
+                <mat-form-field appearance="fill">
+                    <mat-label for="firstOperatingSystem">First operating system</mat-label>
+                    <mat-select required id="firstOperatingSystem" class="form-control" formControlName="firstOperatingSystem"
+                        [(value)]="companyLaptop.firstOperatingSystem">
+                        <mat-option *ngFor="let os of operatingSystemsOptions" [value]="os" [label]="operatingSystems[os]">{{os}}</mat-option>
+                    </mat-select>
+                    <mat-error>
+                        First operating system is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+
+                <br>
+
+                <mat-form-field appearance="fill">
+                    <mat-label for="secondOperatingSystem">Second operating system</mat-label>
+                    <mat-select id="secondOperatingSystem" class="form-control" formControlName="secondOperatingSystem"
+                        [(value)]="companyLaptop.secondOperatingSystem">
+                        <mat-option *ngFor="let os of operatingSystemsOptions" [value]="os" [label]="operatingSystems[os]">{{os}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <br>
+
+            </form>
+
+        </div>
+
+    </mat-card-content>
+    <mat-card-actions>
+        <button (click)="editMode = true" *ngIf="!editMode && viewDetails" mat-raised-button>Edit</button>
+        <button (click)="updateCompanyLaptop()" *ngIf="editMode && viewDetails" disabled mat-raised-button>Save</button>
+        <button (click)="editMode = false" *ngIf="editMode && viewDetails" mat-raised-button>Cancel</button>
+    </mat-card-actions>
+</mat-card>

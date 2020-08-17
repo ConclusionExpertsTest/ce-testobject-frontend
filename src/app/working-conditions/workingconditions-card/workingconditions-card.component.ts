@@ -16,16 +16,16 @@ export class WorkingconditionsCardComponent implements OnInit {
 
   workingConditionForm: FormGroup;
 
-  viewDetails: boolean = false;
-  editMode: boolean = false;
+  viewDetails = false;
+  editMode = false;
 
   @Input() workingCondition: WorkingCondition;
   observableCompanyLaptop: Observable<CompanyLaptop[]>;
   observableSalaryGroup: Observable<SalaryGroup[]>;
 
   constructor(private workingConditionsComponent: WorkingConditionsComponent,
-    private workingConditionsService: WorkingConditionsService, 
-    private fb: FormBuilder) { }
+              private workingConditionsService: WorkingConditionsService,
+              private fb: FormBuilder) { }
 
   ngOnInit(): void {
 
@@ -33,8 +33,8 @@ export class WorkingconditionsCardComponent implements OnInit {
     this.observableCompanyLaptop = this.workingConditionsService.getAllCompanyLaptops();
 
     console.log(this.observableSalaryGroup);
-    
-    
+
+
     this.workingConditionForm = this.fb.group({
       salaryGroup: [this.workingCondition.salaryGroup, [Validators.required]],
       companyCar: [this.workingCondition.companyCar, [Validators.required]],
@@ -52,6 +52,7 @@ export class WorkingconditionsCardComponent implements OnInit {
         response => {
           console.log(response);
           this.editMode = false;
+          this.workingConditionsComponent.ngOnInit();
         },
         error => {
           console.log(error);
