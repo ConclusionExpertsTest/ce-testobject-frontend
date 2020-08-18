@@ -1,20 +1,18 @@
 import { Component, OnInit } from '@angular/core';
+import {WorkingConditionsComponent} from '../working-conditions.component';
+import {WorkingConditionsService} from '../working-conditions.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {CompanyLaptop} from '../classes/companylaptop';
 import {SalaryGroup} from '../classes/salarygroup';
-import {WorkingConditionsComponent} from '../working-conditions.component';
-import {WorkingConditionsService} from '../working-conditions.service';
 import {WorkingCondition} from '../classes/workingcondition';
 
 @Component({
-  selector: 'app-new-workingconditions-card',
-  templateUrl: './new-workingconditions-card.component.html',
-  styleUrls: ['./new-workingconditions-card.component.css']
+  selector: 'app-create-workingconditions-dialog',
+  templateUrl: './create-workingconditions-dialog.component.html',
+  styleUrls: ['./create-workingconditions-dialog.component.css']
 })
-export class NewWorkingconditionsCardComponent implements OnInit {
-
-  newMode = true;
+export class CreateWorkingconditionsDialogComponent implements OnInit {
 
   workingConditionForm: FormGroup;
 
@@ -23,8 +21,7 @@ export class NewWorkingconditionsCardComponent implements OnInit {
 
   workingCondition = new WorkingCondition();
 
-  constructor(private workingConditionsComponent: WorkingConditionsComponent,
-              private workingConditionsService: WorkingConditionsService,
+  constructor(private workingConditionsService: WorkingConditionsService,
               private fb: FormBuilder) { }
 
   ngOnInit(): void {
@@ -37,6 +34,7 @@ export class NewWorkingconditionsCardComponent implements OnInit {
       companyLaptop: [this.workingCondition.companyLaptop, [Validators.required]]
     });
   }
+
   addWorkingCondition(): void {
     this.workingCondition.salaryGroup = this.workingConditionForm.value.salaryGroup;
     this.workingCondition.companyCar = this.workingConditionForm.value.companyCar;
@@ -46,25 +44,10 @@ export class NewWorkingconditionsCardComponent implements OnInit {
       .subscribe(
         response => {
           console.log(response);
-          this.newMode = false;
-          this.workingConditionsComponent.ngOnInit();
         },
         error => {
           console.log(error);
         });
-  }
-
-  addAnother(): void {
-    this.workingConditionForm.reset('');
-    this.newMode = true;
-  }
-
-  doneAdding(): void {
-    this.cancel();
-  }
-
-  cancel(): void {
-    window.location.reload();
   }
 
 }

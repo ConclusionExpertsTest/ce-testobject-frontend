@@ -17,8 +17,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatListModule } from '@angular/material/list';
+import { MatDialogModule } from '@angular/material/dialog';
 import { UserListComponent } from './users/user-card/user-list/user-list.component';
-import { NewUserCardComponent } from './users/new-user-card/new-user-card.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DetailsComponent } from './users/user-card/details/details.component';
 import { UserdetailCompanylaptopCardComponent } from './users/user-card/details/userdetail-companylaptop-card/userdetail-companylaptop-card.component';
@@ -28,7 +28,9 @@ import { MatTableModule } from '@angular/material/table';
 import { WorkingconditionsCardComponent } from './working-conditions/workingconditions-card/workingconditions-card.component';
 import { CompanylaptopCardComponent } from './working-conditions/companylaptop-card/companylaptop-card.component';
 import { SalarygroupCardComponent } from './working-conditions/salarygroup-card/salarygroup-card.component';
-import { NewWorkingconditionsCardComponent } from './working-conditions/new-workingconditions-card/new-workingconditions-card.component';
+import { CreateWorkingconditionsDialogComponent } from './working-conditions/create-workingconditions-dialog/create-workingconditions-dialog.component';
+import { UserDialogComponent } from './users/user-dialog/user-dialog.component';
+import { DeleteDialogComponent } from './common/delete-dialog/delete-dialog.component';
 
 @NgModule({
   declarations: [
@@ -37,14 +39,15 @@ import { NewWorkingconditionsCardComponent } from './working-conditions/new-work
     WorkingConditionsComponent,
     UserCardComponent,
     UserListComponent,
-    NewUserCardComponent,
     DetailsComponent,
     UserdetailCompanylaptopCardComponent,
     UserdetailSalarygroupCardComponent,
     WorkingconditionsCardComponent,
     CompanylaptopCardComponent,
     SalarygroupCardComponent,
-    NewWorkingconditionsCardComponent,
+    CreateWorkingconditionsDialogComponent,
+    UserDialogComponent,
+    DeleteDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,10 +65,12 @@ import { NewWorkingconditionsCardComponent } from './working-conditions/new-work
     MatListModule,
     MatTabsModule,
     MatTableModule,
-    FormsModule, 
+    MatDialogModule,
+    FormsModule,
     ReactiveFormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [CreateWorkingconditionsDialogComponent]
 })
 export class AppModule { }

@@ -2,7 +2,7 @@
 
     <mat-tab label="Working conditions">
 
-      <button (click)="newMode = true" *ngIf="!newMode" mat-raised-button class="new-wc-button">+ Create new
+      <button (click)="openDialog()" *ngIf="!newMode" mat-raised-button class="new-wc-button">+ Create new
         working conditions collection</button>
 
       <div class="wc-div">

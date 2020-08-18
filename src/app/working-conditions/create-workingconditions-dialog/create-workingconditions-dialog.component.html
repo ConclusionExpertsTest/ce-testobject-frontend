@@ -1,0 +1,46 @@
+<h2 mat-dialog-title>Create a new set of working conditions</h2>
+
+<div mat-dialog-content>
+  <form [formGroup]="workingConditionForm">
+
+    <mat-form-field appearance="fill">
+      <mat-label for="salaryGroup">Salary group</mat-label>
+      <mat-select required id="salaryGroup" class="form-control" formControlName="salaryGroup">
+        <mat-option *ngFor="let sg of observableSalaryGroup | async" [value]="sg.salaryGroupCode">{{sg.salaryGroupCode}}</mat-option>
+      </mat-select>
+      <mat-error>
+        Salary group ID is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <br>
+
+    <mat-form-field appearance="fill">
+      <mat-label for="companyCar">Company car</mat-label>
+      <mat-select required id="companyCar" class="form-control" formControlName="companyCar">
+        <mat-option value="true">true</mat-option>
+        <mat-option value="false">false</mat-option>
+      </mat-select>
+      <mat-error>
+        Select <strong>true</strong> or <strong>false</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <br>
+
+    <mat-form-field appearance="fill">
+      <mat-label for="companyLaptop">Company laptop</mat-label>
+      <mat-select required id="companyLaptop" class="form-control" formControlName="companyLaptop">
+        <mat-option *ngFor="let cl of observableCompanyLaptop | async" [value]="cl.companyLaptopTypes">{{cl.companyLaptopTypes}}</mat-option>
+      </mat-select>
+      <mat-error>
+        Company laptop ID is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button mat-dialog-close>Cancel</button>
+  <button mat-raised-button mat-dialog-close color="primary" (click)="addWorkingCondition()">Create</button>
+</div>

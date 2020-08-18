@@ -18,20 +18,20 @@ export class UserCardComponent implements OnInit {
 
   userForm: FormGroup;
 
-  viewDetails: boolean = false;
-  editMode: boolean = false;
-  allDetailsMode: boolean = false;
+  viewDetails = false;
+  editMode = false;
+  allDetailsMode = false;
 
   @Input() user: User;
 
   constructor(private workingConditionsService: WorkingConditionsService,
-    private usersService: UsersService,
-    private fb: FormBuilder,
-    private usersComponent: UsersComponent) { }
+              private usersService: UsersService,
+              private fb: FormBuilder,
+              private usersComponent: UsersComponent) { }
 
   ngOnInit(): void {
     this.observableWorkingConditions = this.workingConditionsService.getWorkingconditions();
-    
+
     this.userForm = this.fb.group({
       firstName: [this.user.firstName, [Validators.required]],
       lastName: [this.user.lastName, [Validators.required]],
@@ -40,7 +40,7 @@ export class UserCardComponent implements OnInit {
       workingConditionsId: [this.user.workingConditionsId, [Validators.required]],
       active: [this.user.active, [Validators.required]]
     });
-  };
+  }
 
   updateUser(): void {
     this.user.firstName = this.userForm.value.firstName,
@@ -48,7 +48,7 @@ export class UserCardComponent implements OnInit {
       this.user.address = this.userForm.value.address,
       this.user.occupation = this.userForm.value.occupation,
       this.user.workingConditionsId = this.userForm.value.workingConditionsId,
-      this.user.active = this.userForm.value.active
+      this.user.active = this.userForm.value.active;
 
     this.usersService.update(this.user.id, this.user)
       .subscribe(

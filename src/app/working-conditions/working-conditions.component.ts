@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { WorkingCondition } from './classes/workingcondition';
 import { SalaryGroup } from './classes/salarygroup';
 import { CompanyLaptop } from './classes/companylaptop';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { CreateWorkingconditionsDialogComponent } from './create-workingconditions-dialog/create-workingconditions-dialog.component';
 
 @Component({
   selector: 'app-working-conditions',
@@ -18,12 +20,27 @@ export class WorkingConditionsComponent implements OnInit {
   observableSalaryGroup: Observable<SalaryGroup[]>;
   observableCompanyLaptop: Observable<CompanyLaptop[]>;
 
-  constructor(private workingConditionsService: WorkingConditionsService) { }
+  constructor(private dialog: MatDialog,
+              private workingConditionsService: WorkingConditionsService) { }
 
   ngOnInit(): void {
     this.observableWorkingConditions = this.workingConditionsService.getWorkingconditions();
     this.observableSalaryGroup = this.workingConditionsService.getAllSalaryGroups();
     this.observableCompanyLaptop = this.workingConditionsService.getAllCompanyLaptops();
+  }
+
+  openDialog(): void {
+
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+
+    const dialogRef = this.dialog.open(CreateWorkingconditionsDialogComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.ngOnInit();
+    });
   }
 
 }
