@@ -1,0 +1,59 @@
+<mat-card class="salarygroup-card">
+    <mat-card-header class="salarygroup-card-header">
+      <div mat-card-avatar class="salarygroup-header-image"></div>
+      <mat-card-title>Salary group code '{{salaryGroup.salaryGroupCode}}'</mat-card-title>
+      <mat-card-subtitle>subtitle</mat-card-subtitle>
+    </mat-card-header>
+    <button class="detail-button" (click)="viewDetails = true" *ngIf="!viewDetails" mat-stroked-button>Show
+      details</button>
+    <button class="detail-button" (click)="viewDetails = false" *ngIf="viewDetails && !editMode" mat-stroked-button>Hide
+      details</button>
+    <mat-card-content class="mat-card-content">
+  
+      <div *ngIf="viewDetails && !editMode" class="salarygroup-list-container">
+
+        <mat-list role="list">
+            <label>Minimum amount: 
+                <mat-list-item role="listitem">{{salaryGroup.minAmount}}</mat-list-item>
+            </label>
+            <label>Maximum amount: 
+                <mat-list-item role="listitem">{{salaryGroup.maxAmount}}</mat-list-item>
+            </label>
+          </mat-list>
+
+      </div>
+      <div *ngIf="viewDetails && editMode"  class="salarygroup-form-container">
+
+        <form [formGroup]="salaryGroupForm">
+    
+            <mat-form-field appearance="fill">
+                <mat-label for="minAmount">Minimum amount</mat-label>
+                <input id="minAmount" required matInput class="form-control" formControlName="minAmount"
+                    value="{{salaryGroup.minAmount}}">
+                <mat-error>
+                    Minimum amount is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <br>
+
+            <mat-form-field appearance="fill">
+                <mat-label for="maxAmount">Maximum amount</mat-label>
+                <input id="maxAmount" required matInput class="form-control" formControlName="maxAmount"
+                    value="{{salaryGroup.maxAmount}}">
+                <mat-error>
+                    Maximum amount is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+    
+          </form>
+
+      </div>
+  
+    </mat-card-content>
+    <mat-card-actions>
+        <button (click)="editMode = true" *ngIf="!editMode && viewDetails" mat-raised-button>Edit</button>
+        <button (click)="updateSalaryGroup()" *ngIf="editMode && viewDetails" mat-raised-button>Save</button>
+        <button (click)="editMode = false" *ngIf="editMode && viewDetails" mat-raised-button>Cancel</button>
+    </mat-card-actions>
+  </mat-card>

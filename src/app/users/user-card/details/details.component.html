@@ -10,9 +10,10 @@
 
                 <div *ngFor="let companyLaptop of observableCompanyLaptop">
 
-                    <div class="company-laptop-container" *ngIf="companyLaptop.companyLaptopTypes == workingCondition.companyLaptop">
-                        
-                        <app-companylaptop-card [companyLaptop]="companyLaptop"></app-companylaptop-card>
+                    <div class="company-laptop-container"
+                        *ngIf="companyLaptop.companyLaptopTypes == workingCondition.companyLaptop">
+
+                        <app-userdetail-companylaptop-card [companyLaptop]="companyLaptop"></app-userdetail-companylaptop-card>
 
                     </div>
 
@@ -28,9 +29,10 @@
 
                 <div *ngFor="let salaryGroup of observableSalaryGroup">
 
-                    <div class="salary-group-container" *ngIf="salaryGroup.salaryGroupCode == workingCondition.salaryGroup">
-                        
-                        <app-salarygroup-card [salaryGroup]="salaryGroup"></app-salarygroup-card>
+                    <div class="salary-group-container"
+                        *ngIf="salaryGroup.salaryGroupCode == workingCondition.salaryGroup">
+
+                        <app-userdetail-salarygroup-card [salaryGroup]="salaryGroup"></app-userdetail-salarygroup-card>
 
                     </div>
 
@@ -40,6 +42,12 @@
 
             <ng-template #empty> No salarygroups found - dit you start the working-conditions-application backend?
             </ng-template>
+
+            <mat-list role="list">
+                <label>Company car:
+                    <mat-list-item role="listitem">Company car: {{workingCondition.companyCar}}</mat-list-item>
+                </label>
+            </mat-list>
 
         </div>
 

@@ -21,8 +21,14 @@ import { UserListComponent } from './users/user-card/user-list/user-list.compone
 import { NewUserCardComponent } from './users/new-user-card/new-user-card.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DetailsComponent } from './users/user-card/details/details.component';
-import { CompanylaptopCardComponent } from './users/user-card/details/companylaptop-card/companylaptop-card.component';
-import { SalarygroupCardComponent } from './users/user-card/details/salarygroup-card/salarygroup-card.component';
+import { UserdetailCompanylaptopCardComponent } from './users/user-card/details/userdetail-companylaptop-card/userdetail-companylaptop-card.component';
+import { UserdetailSalarygroupCardComponent } from './users/user-card/details/userdetail-salarygroup-card/userdetail-salarygroup-card.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatTableModule } from '@angular/material/table';
+import { WorkingconditionsCardComponent } from './working-conditions/workingconditions-card/workingconditions-card.component';
+import { CompanylaptopCardComponent } from './working-conditions/companylaptop-card/companylaptop-card.component';
+import { SalarygroupCardComponent } from './working-conditions/salarygroup-card/salarygroup-card.component';
+import { NewWorkingconditionsCardComponent } from './working-conditions/new-workingconditions-card/new-workingconditions-card.component';
 
 @NgModule({
   declarations: [
@@ -33,8 +39,12 @@ import { SalarygroupCardComponent } from './users/user-card/details/salarygroup-
     UserListComponent,
     NewUserCardComponent,
     DetailsComponent,
+    UserdetailCompanylaptopCardComponent,
+    UserdetailSalarygroupCardComponent,
+    WorkingconditionsCardComponent,
     CompanylaptopCardComponent,
     SalarygroupCardComponent,
+    NewWorkingconditionsCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,6 +60,8 @@ import { SalarygroupCardComponent } from './users/user-card/details/salarygroup-
     MatInputModule,
     MatSelectModule,
     MatListModule,
+    MatTabsModule,
+    MatTableModule,
     FormsModule, 
     ReactiveFormsModule
   ],

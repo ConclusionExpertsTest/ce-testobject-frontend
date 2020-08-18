@@ -1,1 +1,69 @@
-<p>working-conditions works!</p>
+<mat-tab-group mat-align-tabs="start">
+
+    <mat-tab label="Working conditions">
+
+      <button (click)="newMode = true" *ngIf="!newMode" mat-raised-button class="new-wc-button">+ Create new
+        working conditions collection</button>
+
+      <div class="wc-div">
+        <app-new-workingconditions-card *ngIf="newMode"></app-new-workingconditions-card>
+      </div>
+
+            <div *ngIf="observableWorkingConditions | async as observableWorkingConditions else empty"
+                class="wc-div">
+
+                <div *ngFor="let workingCondition of observableWorkingConditions">
+
+                    <app-workingconditions-card [workingCondition]="workingCondition"></app-workingconditions-card>
+
+                </div>
+
+            </div>
+
+            <ng-template #empty> No working conditions found - dit you start the working-conditions-application backend?
+            </ng-template>
+
+    </mat-tab>
+
+    <mat-tab label="Company laptops">
+
+            <div *ngIf="observableCompanyLaptop | async as observableCompanyLaptop else empty" class="wc-div">
+
+                <div *ngFor="let companyLaptop of observableCompanyLaptop">
+
+                    <app-companylaptop-card [companyLaptop]="companyLaptop"></app-companylaptop-card>
+
+                </div>
+
+            </div>
+
+            <ng-template #empty> No company laptops found - dit you start the working-conditions-application backend?</ng-template>
+
+    </mat-tab>
+
+    <mat-tab label="Salary groups">
+
+            <div *ngIf="observableSalaryGroup | async as observableSalaryGroup else empty" class="wc-div">
+
+                <div *ngFor="let salaryGroup of observableSalaryGroup">
+
+                    <app-salarygroup-card [salaryGroup]="salaryGroup"></app-salarygroup-card>
+
+                </div>
+
+            </div>
+
+            <ng-template #empty> No salarygroups found - dit you start the working-conditions-application backend?</ng-template>
+
+    </mat-tab>
+
+  </mat-tab-group>
+
+
+
+
+
+
+
+
+

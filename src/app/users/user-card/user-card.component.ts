@@ -55,6 +55,7 @@ export class UserCardComponent implements OnInit {
         response => {
           console.log(response);
           this.editMode = false;
+          this.usersComponent.ngOnInit();
         },
         error => {
           console.log(error);

@@ -43,8 +43,8 @@ export class WorkingConditionsService {
     return this.httpclient.get(`${this.BASE_URL}/salarygroups/${id}`);
   }
 
-  updateSalaryGroup(id, data): Observable<any> {
-    return this.httpclient.put(`${this.BASE_URL}/salarygroups/${id}`, data);
+  updateSalaryGroup(salaryGroupCode, data): Observable<any> {
+    return this.httpclient.put(`${this.BASE_URL}/salarygroups/${salaryGroupCode}`, data);
   }
 
   // Company laptops
@@ -57,7 +57,7 @@ export class WorkingConditionsService {
     return this.httpclient.get(`${this.BASE_URL}/companylaptop/${id}`);
   }
 
-  updateCompanyLaptop(id, data): Observable<any> {
-    return this.httpclient.put(`${this.BASE_URL}/companylaptop/${id}`, data);
+  updateCompanyLaptop(companyLaptopType, data): Observable<any> {
+    return this.httpclient.put(`${this.BASE_URL}/companylaptop/${companyLaptopType}`, data);
   }
 }
