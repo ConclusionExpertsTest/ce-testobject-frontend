@@ -15,23 +15,23 @@ import { AppComponent } from 'src/app/app.component';
 })
 export class NewUserCardComponent implements OnInit {
 
-  newMode: boolean = true;
+  newMode = true;
 
-  observableWorkingConditions : Observable<WorkingCondition[]>;
+  observableWorkingConditions: Observable<WorkingCondition[]>;
 
   userForm: FormGroup;
 
-  user = new User()
+  user = new User();
 
   constructor(private usersComponent: UsersComponent,
-    private fb: FormBuilder, 
-    private usersService: UsersService, 
-    private workingConditionsService: WorkingConditionsService,
-    private appComponent: AppComponent) { }
+              private fb: FormBuilder,
+              private usersService: UsersService,
+              private workingConditionsService: WorkingConditionsService,
+              private appComponent: AppComponent) { }
 
   ngOnInit(): void {
     this.observableWorkingConditions = this.workingConditionsService.getWorkingconditions();
-    
+
     this.userForm = this.fb.group({
       firstName: [null, [Validators.required]],
       lastName: [null, [Validators.required]],
@@ -48,9 +48,9 @@ export class NewUserCardComponent implements OnInit {
       this.user.address = this.userForm.value.address,
       this.user.occupation = this.userForm.value.occupation,
       this.user.workingConditionsId = this.userForm.value.workingConditionsId,
-      this.user.active = this.userForm.value.active
+      this.user.active = this.userForm.value.active;
 
-    this.usersService.create(this.user)
+      this.usersService.create(this.user)
       .subscribe(
         response => {
           console.log(response);
@@ -76,4 +76,3 @@ export class NewUserCardComponent implements OnInit {
   }
 
 }
- 

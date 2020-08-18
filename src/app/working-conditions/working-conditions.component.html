@@ -2,8 +2,15 @@
 
     <mat-tab label="Working conditions">
 
+      <button (click)="newMode = true" *ngIf="!newMode" mat-raised-button class="new-wc-button">+ Create new
+        working conditions collection</button>
+
+      <div class="wc-div">
+        <app-new-workingconditions-card *ngIf="newMode"></app-new-workingconditions-card>
+      </div>
+
             <div *ngIf="observableWorkingConditions | async as observableWorkingConditions else empty"
-                class="working-conditions-container">
+                class="wc-div">
 
                 <div *ngFor="let workingCondition of observableWorkingConditions">
 
@@ -20,7 +27,7 @@
 
     <mat-tab label="Company laptops">
 
-            <div *ngIf="observableCompanyLaptop | async as observableCompanyLaptop else empty" class="company-laptops-container">
+            <div *ngIf="observableCompanyLaptop | async as observableCompanyLaptop else empty" class="wc-div">
 
                 <div *ngFor="let companyLaptop of observableCompanyLaptop">
 
@@ -36,7 +43,7 @@
 
     <mat-tab label="Salary groups">
 
-            <div *ngIf="observableSalaryGroup | async as observableSalaryGroup else empty" class="salary-groups-container">
+            <div *ngIf="observableSalaryGroup | async as observableSalaryGroup else empty" class="wc-div">
 
                 <div *ngFor="let salaryGroup of observableSalaryGroup">
 

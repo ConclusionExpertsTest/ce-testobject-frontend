@@ -121,7 +121,7 @@
     </mat-card-content>
     <mat-card-actions>
         <button (click)="editMode = true" *ngIf="!editMode && viewDetails" mat-raised-button>Edit</button>
-        <button (click)="updateCompanyLaptop()" *ngIf="editMode && viewDetails" disabled mat-raised-button>Save</button>
+        <button (click)="updateCompanyLaptop()" *ngIf="editMode && viewDetails" mat-raised-button>Save</button>
         <button (click)="editMode = false" *ngIf="editMode && viewDetails" mat-raised-button>Cancel</button>
     </mat-card-actions>
 </mat-card>

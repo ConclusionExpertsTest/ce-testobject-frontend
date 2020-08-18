@@ -12,6 +12,8 @@ import { CompanyLaptop } from './classes/companylaptop';
 })
 export class WorkingConditionsComponent implements OnInit {
 
+  newMode = false;
+
   observableWorkingConditions: Observable<WorkingCondition[]>;
   observableSalaryGroup: Observable<SalaryGroup[]>;
   observableCompanyLaptop: Observable<CompanyLaptop[]>;

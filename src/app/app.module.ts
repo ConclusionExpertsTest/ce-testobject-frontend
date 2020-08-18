@@ -28,6 +28,7 @@ import { MatTableModule } from '@angular/material/table';
 import { WorkingconditionsCardComponent } from './working-conditions/workingconditions-card/workingconditions-card.component';
 import { CompanylaptopCardComponent } from './working-conditions/companylaptop-card/companylaptop-card.component';
 import { SalarygroupCardComponent } from './working-conditions/salarygroup-card/salarygroup-card.component';
+import { NewWorkingconditionsCardComponent } from './working-conditions/new-workingconditions-card/new-workingconditions-card.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { SalarygroupCardComponent } from './working-conditions/salarygroup-card/
     WorkingconditionsCardComponent,
     CompanylaptopCardComponent,
     SalarygroupCardComponent,
+    NewWorkingconditionsCardComponent,
   ],
   imports: [
     BrowserModule,

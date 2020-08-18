@@ -32,9 +32,6 @@ export class WorkingconditionsCardComponent implements OnInit {
     this.observableSalaryGroup = this.workingConditionsService.getAllSalaryGroups();
     this.observableCompanyLaptop = this.workingConditionsService.getAllCompanyLaptops();
 
-    console.log(this.observableSalaryGroup);
-
-
     this.workingConditionForm = this.fb.group({
       salaryGroup: [this.workingCondition.salaryGroup, [Validators.required]],
       companyCar: [this.workingCondition.companyCar, [Validators.required]],

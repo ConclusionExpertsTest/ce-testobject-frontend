@@ -1,0 +1,56 @@
+<mat-card class="workingcondition-card">
+  <mat-card-header class="workingcondition-card-header">
+    <div mat-card-avatar class="workingcondition-header-image"></div>
+    <mat-card-title>New working condition set</mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="mat-card-content">
+
+    <div *ngIf="newMode"  class="workingcondition-form-container">
+
+      <form [formGroup]="workingConditionForm">
+
+        <mat-form-field appearance="fill">
+          <mat-label for="salaryGroup">Salary group</mat-label>
+          <mat-select required id="salaryGroup" class="form-control" formControlName="salaryGroup">
+            <mat-option *ngFor="let sg of observableSalaryGroup | async" [value]="sg.salaryGroupCode"></mat-option>
+          </mat-select>
+          <mat-error>
+            Salary group ID is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <br>
+
+        <mat-form-field appearance="fill">
+          <mat-label for="companyCar">Company car</mat-label>
+          <mat-select required id="companyCar" class="form-control" formControlName="companyCar">
+            <mat-option value="true">true</mat-option>
+            <mat-option value="false">false</mat-option>
+          </mat-select>
+          <mat-error>
+            Select <strong>true</strong> or <strong>false</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label for="companyLaptop">Company laptop</mat-label>
+          <mat-select required id="companyLaptop" class="form-control" formControlName="companyLaptop">
+            <mat-option *ngFor="let cl of observableCompanyLaptop | async" [value]="cl.companyLaptopTypes"></mat-option>
+          </mat-select>
+          <mat-error>
+            Company laptop ID is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
+      </form>
+
+    </div>
+
+  </mat-card-content>
+  <mat-card-actions>
+    <button *ngIf="!newMode" (click)="addAnother()" mat-raised-button> + Add another user </button>
+    <button *ngIf="!newMode" (click)="doneAdding()" mat-raised-button> Done </button>
+    <button *ngIf="newMode" (click)="addWorkingCondition()" mat-raised-button>Save</button>
+    <button *ngIf="newMode" (click)="cancel()" mat-raised-button>Cancel</button>
+  </mat-card-actions>
+</mat-card>
