@@ -31,6 +31,9 @@ import { SalarygroupCardComponent } from './working-conditions/salarygroup-card/
 import { CreateWorkingconditionsDialogComponent } from './working-conditions/create-workingconditions-dialog/create-workingconditions-dialog.component';
 import { UserDialogComponent } from './users/user-dialog/user-dialog.component';
 import { DeleteDialogComponent } from './common/delete-dialog/delete-dialog.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -49,26 +52,29 @@ import { DeleteDialogComponent } from './common/delete-dialog/delete-dialog.comp
     UserDialogComponent,
     DeleteDialogComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatButtonModule,
-    MatCardModule,
-    MatProgressSpinnerModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    MatListModule,
-    MatTabsModule,
-    MatTableModule,
-    MatDialogModule,
-    FormsModule,
-    ReactiveFormsModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        MatToolbarModule,
+        MatIconModule,
+        MatButtonModule,
+        MatCardModule,
+        MatProgressSpinnerModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule,
+        MatListModule,
+        MatTabsModule,
+        MatTableModule,
+        MatDialogModule,
+        MatSortModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatSidenavModule,
+        MatPaginatorModule
+    ],
   providers: [],
   bootstrap: [AppComponent],
   entryComponents: [CreateWorkingconditionsDialogComponent]

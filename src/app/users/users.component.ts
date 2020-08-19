@@ -1,10 +1,13 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import { Observable } from  'rxjs';
-import { UsersService } from './users-service.service';
-import { User } from './user';
-import {MAT_DIALOG_DATA, MatDialog, MatDialogConfig, MatDialogRef} from '@angular/material/dialog';
-import { UserDialogComponent } from './user-dialog/user-dialog.component';
-import { DeleteDialogComponent } from '../common/delete-dialog/delete-dialog.component';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {Observable} from 'rxjs';
+import {UsersService} from './users-service.service';
+import {User} from './user';
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
+import {UserDialogComponent} from './user-dialog/user-dialog.component';
+import {DeleteDialogComponent} from '../common/delete-dialog/delete-dialog.component';
+import {MatTableDataSource} from '@angular/material/table';
+import {MatPaginator} from '@angular/material/paginator';
+import {MatSort} from '@angular/material/sort';
 
 @Component({
   selector: 'app-users',
@@ -16,7 +19,10 @@ export class UsersComponent implements OnInit {
   displayedColumns = ['firstName', 'lastName', 'address', 'occupation', 'workingConditionsId', 'active', 'actions'];
 
   user: User;
-  users: User[];
+  users: MatTableDataSource<User>;
+
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  @ViewChild(MatSort, {static: true}) sort: MatSort;
 
   usersObservable: Observable<User[]>;
 
@@ -24,11 +30,26 @@ export class UsersComponent implements OnInit {
               private usersService: UsersService) {  }
 
   ngOnInit(): void {
+
     this.usersObservable = this.usersService.getAll();
 
     this.usersObservable.subscribe((usersInObs) => {
-      this.users = usersInObs;
+      this.users = new MatTableDataSource(usersInObs);
+      this.users.paginator = this.paginator;
+      this.users.sort = this.sort;
     });
+
+    console.log(this.users);
+
+  }
+
+  applyFilter(event: Event): void {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.users.filter = filterValue.trim().toLowerCase();
+
+    if (this.users.paginator) {
+      this.users.paginator.firstPage();
+    }
   }
 
   newUser(): User {
