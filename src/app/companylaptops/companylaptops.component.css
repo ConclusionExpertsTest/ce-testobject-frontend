@@ -1,13 +1,19 @@
 .mat-tab-group {
-    margin-bottom: 48px;
-  }
+  margin-bottom: 48px;
+}
 
 .mat-form-field {
   width: 400px;
 }
 
-.wc-div {
+.cl-div {
   padding-top: 15px;
   padding-left: 15px;
   padding-right: 15px;
+}
+
+/* Column Widths */
+.mat-column-active,
+.mat-column-id {
+  max-width: 5%;
 }

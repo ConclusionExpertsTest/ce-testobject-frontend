@@ -1,5 +1,5 @@
 <div *ngIf="usersObservable | async as usersObservable else empty"
-     class="workingconditions-container">
+     class="users-div">
 
   <button (click)="refresh()" mat-icon-button color="primary" aria-label="Refresh table content">
     <mat-icon>refresh</mat-icon>
@@ -21,6 +21,12 @@
       <mat-cell class="description-cell"
                 *matCellDef="let user">{{user.firstName}}</mat-cell>
 
+    </ng-container>
+
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+      <mat-cell class="duration-cell"
+                *matCellDef="let user">{{user.id}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="lastName">
@@ -74,7 +80,8 @@
 
   </mat-table>
 
-  <mat-paginator [pageSizeOptions]="[5, 10, 15]"></mat-paginator>
+  <!-- not working for now!
+<mat-paginator [pageSizeOptions]="[5, 10, 15]"></mat-paginator>-->
 
 </div>
 

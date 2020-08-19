@@ -1,8 +1,13 @@
-<mat-toolbar color="primary">  
-  <h1>  
+<mat-toolbar color="primary">
+  <h1>
   Conclusion Experts - Testobject
-  </h1>  
-  <button mat-button routerLink="/">Users</button>  
-  <button mat-button routerLink="/working-conditions">Working conditions</button>
+  </h1>
+  <button mat-button routerLink="/">Users</button>
+  <button mat-button [matMenuTriggerFor]="workingConditionsMenu">Working conditions</button>
+  <mat-menu #workingConditionsMenu="matMenu">
+    <button mat-menu-item routerLink="/working-conditions">Sets of working conditions</button>
+    <button mat-menu-item routerLink="/companylaptops">Company laptops</button>
+    <button mat-menu-item routerLink="/salarygroups">Salary groups</button>
+  </mat-menu>
 </mat-toolbar>
 <router-outlet></router-outlet>

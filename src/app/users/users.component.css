@@ -15,7 +15,8 @@
 }
 
 /* Column Widths */
-.mat-column-active {
+.mat-column-active,
+.mat-column-id {
   max-width: 5%;
 }
 

@@ -1,9 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
-import {WorkingCondition} from '../../classes/workingcondition';
-import {CompanyLaptop} from '../../classes/companylaptop';
+import {WorkingCondition} from '../../../common/domain/workingcondition';
+import {CompanyLaptop} from '../../../common/domain/companylaptop';
 import {WorkingConditionsService} from '../../working-conditions.service';
-import {User} from '../../../users/user';
+import {User} from '../../../common/domain/user';
 
 @Component({
   selector: 'app-companylaptop-list',

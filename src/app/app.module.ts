@@ -21,10 +21,7 @@ import { UserListComponent } from './users/user-list/user-list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
-import { WorkingconditionsCardComponent } from './working-conditions/workingconditions-card/workingconditions-card.component';
-import { CompanylaptopCardComponent } from './working-conditions/companylaptop-card/companylaptop-card.component';
-import { SalarygroupCardComponent } from './working-conditions/salarygroup-card/salarygroup-card.component';
-import { CreateWorkingconditionsDialogComponent } from './working-conditions/create-workingconditions-dialog/create-workingconditions-dialog.component';
+import { WorkingconditionsDialogComponent } from './working-conditions/workingconditions-dialog/workingconditions-dialog.component';
 import { UserDialogComponent } from './users/user-dialog/user-dialog.component';
 import { DeleteDialogComponent } from './common/delete-dialog/delete-dialog.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -33,6 +30,11 @@ import { MatSortModule } from '@angular/material/sort';
 import { UserDetailDialogComponent } from './users/user-detail-dialog/user-detail-dialog.component';
 import { CompanylaptopListComponent } from './working-conditions/lists/companylaptop-list/companylaptop-list.component';
 import { SalarygroupListComponent } from './working-conditions/lists/salarygroup-list/salarygroup-list.component';
+import { SalarygroupsComponent } from './salarygroups/salarygroups.component';
+import { CompanylaptopsComponent } from './companylaptops/companylaptops.component';
+import {MatMenuModule} from '@angular/material/menu';
+import { CompanylaptopsDialogComponent } from './companylaptops/companylaptops-dialog/companylaptops-dialog.component';
+import { SalarygroupsDialogComponent } from './salarygroups/salarygroups-dialog/salarygroups-dialog.component';
 
 @NgModule({
   declarations: [
@@ -40,41 +42,43 @@ import { SalarygroupListComponent } from './working-conditions/lists/salarygroup
     UsersComponent,
     WorkingConditionsComponent,
     UserListComponent,
-    WorkingconditionsCardComponent,
-    CompanylaptopCardComponent,
-    SalarygroupCardComponent,
-    CreateWorkingconditionsDialogComponent,
+    WorkingconditionsDialogComponent,
     UserDialogComponent,
     DeleteDialogComponent,
     UserDetailDialogComponent,
     CompanylaptopListComponent,
     SalarygroupListComponent,
+    SalarygroupsComponent,
+    CompanylaptopsComponent,
+    CompanylaptopsDialogComponent,
+    SalarygroupsDialogComponent,
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        HttpClientModule,
-        BrowserAnimationsModule,
-        MatToolbarModule,
-        MatIconModule,
-        MatButtonModule,
-        MatCardModule,
-        MatProgressSpinnerModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatSelectModule,
-        MatListModule,
-        MatTabsModule,
-        MatTableModule,
-        MatDialogModule,
-        MatSortModule,
-        FormsModule,
-        ReactiveFormsModule,
-        MatSidenavModule,
-        MatPaginatorModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatCardModule,
+    MatProgressSpinnerModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatListModule,
+    MatTabsModule,
+    MatTableModule,
+    MatDialogModule,
+    MatSortModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatSidenavModule,
+    MatPaginatorModule,
+    MatMenuModule
+  ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [CreateWorkingconditionsDialogComponent]
+  entryComponents: [WorkingconditionsDialogComponent]
 })
 export class AppModule { }

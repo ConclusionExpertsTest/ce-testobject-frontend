@@ -1,9 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
-import {WorkingCondition} from '../../classes/workingcondition';
-import {SalaryGroup} from '../../classes/salarygroup';
+import {WorkingCondition} from '../../../common/domain/workingcondition';
+import {SalaryGroup} from '../../../common/domain/salarygroup';
 import {WorkingConditionsService} from '../../working-conditions.service';
-import {User} from '../../../users/user';
+import {User} from '../../../common/domain/user';
 
 @Component({
   selector: 'app-salarygroup-list',

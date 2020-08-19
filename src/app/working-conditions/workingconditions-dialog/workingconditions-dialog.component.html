@@ -1,4 +1,5 @@
-<h2 mat-dialog-title>Create a new set of working conditions</h2>
+<h2 mat-dialog-title *ngIf="newMode">Create a new set of working conditions</h2>
+<h2 mat-dialog-title *ngIf="!newMode">Edit set of working conditions</h2>
 
 <div mat-dialog-content>
   <form [formGroup]="workingConditionForm">
@@ -42,5 +43,6 @@
 </div>
 <div mat-dialog-actions>
   <button mat-raised-button mat-dialog-close>Cancel</button>
-  <button mat-raised-button mat-dialog-close color="primary" (click)="addWorkingCondition()">Create</button>
+  <button mat-raised-button mat-dialog-close color="primary" *ngIf="newMode" (click)="addWorkingCondition()">Create</button>
+  <button mat-raised-button mat-dialog-close color="primary" *ngIf="!newMode" (click)="updateWorkingCondition()">Save</button>
 </div>

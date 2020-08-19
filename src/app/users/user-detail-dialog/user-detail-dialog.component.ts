@@ -1,11 +1,11 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {WorkingConditionsService} from '../../working-conditions/working-conditions.service';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
-import {User} from '../user';
+import {User} from '../../common/domain/user';
 import {Observable} from 'rxjs';
-import {WorkingCondition} from '../../working-conditions/classes/workingcondition';
-import {SalaryGroup} from '../../working-conditions/classes/salarygroup';
-import {CompanyLaptop} from '../../working-conditions/classes/companylaptop';
+import {WorkingCondition} from '../../common/domain/workingcondition';
+import {SalaryGroup} from '../../common/domain/salarygroup';
+import {CompanyLaptop} from '../../common/domain/companylaptop';
 
 @Component({
   selector: 'app-user-detail-dialog',

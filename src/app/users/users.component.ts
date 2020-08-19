@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {Observable} from 'rxjs';
 import {UsersService} from './users-service.service';
-import {User} from './user';
+import {User} from '../common/domain/user';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {UserDialogComponent} from './user-dialog/user-dialog.component';
 import {DeleteDialogComponent} from '../common/delete-dialog/delete-dialog.component';
@@ -19,7 +19,7 @@ export class UsersComponent implements OnInit {
 
   dialogConfig = new MatDialogConfig();
 
-  displayedColumns = ['firstName', 'lastName', 'address', 'occupation', 'workingConditionsId', 'active', 'actions'];
+  displayedColumns = ['id', 'firstName', 'lastName', 'address', 'occupation', 'workingConditionsId', 'active', 'actions'];
 
   user: User;
   users: MatTableDataSource<User>;
@@ -44,8 +44,6 @@ export class UsersComponent implements OnInit {
       this.users.paginator = this.paginator;
       this.users.sort = this.sort;
     });
-
-    console.log(this.users);
 
   }
 

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CreateWorkingconditionsDialogComponent } from './create-workingconditions-dialog.component';
+import { WorkingconditionsDialogComponent } from './workingconditions-dialog.component';
 
 describe('CreateWorkingconditionsDialogComponent', () => {
-  let component: CreateWorkingconditionsDialogComponent;
-  let fixture: ComponentFixture<CreateWorkingconditionsDialogComponent>;
+  let component: WorkingconditionsDialogComponent;
+  let fixture: ComponentFixture<WorkingconditionsDialogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CreateWorkingconditionsDialogComponent ]
+      declarations: [ WorkingconditionsDialogComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CreateWorkingconditionsDialogComponent);
+    fixture = TestBed.createComponent(WorkingconditionsDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
