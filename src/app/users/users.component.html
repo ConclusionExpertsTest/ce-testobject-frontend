@@ -1,4 +1,5 @@
-<div class="users-div">
+<div *ngIf="usersObservable | async as usersObservable else empty"
+     class="workingconditions-container">
 
   <button (click)="refresh()" mat-icon-button color="primary" aria-label="Refresh table content">
     <mat-icon>refresh</mat-icon>
@@ -10,7 +11,7 @@
 
   <mat-form-field>
     <mat-label>Filter</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Conclusion" #input>
   </mat-form-field>
 
   <mat-table class="lessons-table mat-elevation-z8" [dataSource]="users">
@@ -61,7 +62,7 @@
         <button mat-icon-button color="warn" aria-label="Delete user" (click)="openDeleteDialog(user.id)">
           <mat-icon>delete</mat-icon>
         </button>
-        <button mat-icon-button aria-label="Show user details">
+        <button mat-icon-button aria-label="Show user details" (click)="openUserDetailDialog(user)">
           <mat-icon>account_circle</mat-icon>
         </button>
       </mat-cell>
@@ -73,6 +74,9 @@
 
   </mat-table>
 
-  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  <mat-paginator [pageSizeOptions]="[5, 10, 15]"></mat-paginator>
 
 </div>
+
+<ng-template #empty> No users found - dit you start the users-application backend? Refresh the page to reload.
+</ng-template>

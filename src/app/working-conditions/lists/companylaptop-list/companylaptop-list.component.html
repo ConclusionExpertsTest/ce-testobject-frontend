@@ -1,0 +1,57 @@
+<div *ngIf="observableWorkingConditions | async as observableWorkingConditions else empty"
+     class="workingconditions-container">
+
+  <div *ngFor="let workingCondition of observableWorkingConditions">
+
+    <div *ngIf="workingCondition.id == user.workingConditionsId">
+
+      <!--Company laptop part-->
+      <div *ngIf="observableCompanyLaptop | async as observableCompanyLaptop else laptopEmpty">
+
+        <div *ngFor="let companyLaptop of observableCompanyLaptop">
+
+          <div class="company-laptop-container"
+               *ngIf="companyLaptop.companyLaptopTypes == workingCondition.companyLaptop">
+
+            <h2>Company laptop</h2>
+            <mat-list role="list">
+              <label>Laptop type:
+                <mat-list-item role="listitem">{{companyLaptop.companyLaptopTypes}}</mat-list-item>
+              </label>
+              <label>Brand and model:
+                <mat-list-item role="listitem">{{companyLaptop.brandAndType}}</mat-list-item>
+              </label>
+              <label>RAM:
+                <mat-list-item role="listitem">{{companyLaptop.memory}}</mat-list-item>
+              </label>
+              <label>Diskspace:
+                <mat-list-item role="listitem">{{companyLaptop.diskspace}}</mat-list-item>
+              </label>
+              <label>First operating system:
+                <mat-list-item role="listitem">{{companyLaptop.firstOperatingSystem}}</mat-list-item>
+              </label>
+              <label>Second operating system:
+                <mat-list-item role="listitem">{{companyLaptop.secondOperatingSystem}}</mat-list-item>
+              </label>
+              <label>Available:
+                <mat-list-item role="listitem">{{companyLaptop.available}}</mat-list-item>
+              </label>
+            </mat-list>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <ng-template #laptopEmpty> No company laptops found - dit you start the working-conditions-application backend?
+      </ng-template>
+
+    </div>
+
+  </div>
+
+</div>
+
+<ng-template #empty> No working conditions found - dit you start the working-conditions-application backend?
+</ng-template>

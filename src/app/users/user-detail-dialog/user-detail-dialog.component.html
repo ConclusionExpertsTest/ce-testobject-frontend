@@ -1,0 +1,19 @@
+<h1>User details for {{user.firstName}} {{user.lastName}}</h1>
+<div mat-dialog-content>
+  <mat-tab-group>
+    <mat-tab label="User">
+      <h2>User details</h2>
+      <app-user-list [user]="user"></app-user-list>
+    </mat-tab>
+    <mat-tab label="Company laptop">
+      <app-companylaptop-list [user]="user"></app-companylaptop-list>
+    </mat-tab>
+    <mat-tab label="Salary group">
+      <app-salarygroup-list [user]="user"></app-salarygroup-list>
+    </mat-tab>
+
+  </mat-tab-group>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button mat-dialog-close>Close</button>
+</div>
