@@ -1,10 +1,31 @@
-.user-div {
-    padding-bottom: 10px;
-    padding-top: 15px;
+.new-user-button {
+    top: 15px;
+    left: 45px;
+    width: 400px;
 }
 
-.new-user-button {
-    top: 15px; 
-    left: 45px; 
-    width: 400px;
+.mat-form-field {
+  width: 400px;
+}
+
+.users-div {
+  padding-top: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Column Widths */
+.mat-column-active,
+.mat-column-id {
+  max-width: 5%;
+}
+
+.mat-column-workingConditionsId,
+.mat-column-actions {
+  max-width: 140px;
+}
+
+.mat-column-firstName,
+.mat-column-lastName {
+  max-width: 10%;
 }

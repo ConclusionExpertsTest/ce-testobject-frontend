@@ -1,0 +1,45 @@
+<div *ngIf="observableWorkingConditions | async as observableWorkingConditions else empty"
+     class="workingconditions-container">
+
+  <div *ngFor="let workingCondition of observableWorkingConditions">
+
+    <div *ngIf="workingCondition.id == user.workingConditionsId">
+
+      <div *ngIf="observableSalaryGroup | async as observableSalaryGroup else salaryGroupEmpty">
+
+        <div *ngFor="let salaryGroup of observableSalaryGroup">
+
+          <div class="salary-group-container"
+               *ngIf="salaryGroup.salaryGroupCode == workingCondition.salaryGroup">
+
+            <h2>Salary group</h2>
+            <mat-list role="list">
+              <label>Salary group code:
+                <mat-list-item role="listitem">{{salaryGroup.salaryGroupCode}}</mat-list-item>
+              </label>
+              <label>Minumum amount:
+                <mat-list-item role="listitem">{{salaryGroup.minAmount}}</mat-list-item>
+              </label>
+              <label>Maximum amount:
+                <mat-list-item role="listitem">{{salaryGroup.maxAmount}}</mat-list-item>
+              </label>
+            </mat-list>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <ng-template #salaryGroupEmpty> No salarygroups found - dit you start the working-conditions-application backend?
+      </ng-template>
+
+    </div>
+
+  </div>
+
+</div>
+
+<ng-template #empty> No working conditions found - dit you start the working-conditions-application backend?
+</ng-template>
+

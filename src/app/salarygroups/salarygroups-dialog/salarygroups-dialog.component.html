@@ -1,0 +1,32 @@
+<h2 mat-dialog-title>Edit salary group</h2>
+
+<div mat-dialog-content>
+  <form [formGroup]="salaryGroupForm">
+
+    <mat-form-field appearance="fill">
+      <mat-label for="minAmount">Minimum amount</mat-label>
+      <input id="minAmount" required matInput class="form-control" formControlName="minAmount"
+             value="{{salaryGroup.minAmount}}">
+      <mat-error>
+        Minimum amount is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <br>
+
+    <mat-form-field appearance="fill">
+      <mat-label for="maxAmount">Maximum amount</mat-label>
+      <input id="maxAmount" required matInput class="form-control" formControlName="maxAmount"
+             value="{{salaryGroup.maxAmount}}">
+      <mat-error>
+        Maximum amount is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+  </form>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-raised-button mat-dialog-close>Cancel</button>
+  <button mat-raised-button mat-dialog-close color="primary" (click)="updateSalaryGroup()">Save</button>
+</div>

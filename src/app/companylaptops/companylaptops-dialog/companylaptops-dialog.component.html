@@ -1,0 +1,79 @@
+<h2 mat-dialog-title>Edit company laptop</h2>
+
+<div mat-dialog-content>
+  <form [formGroup]="companyLaptopForm">
+
+    <mat-form-field appearance="fill">
+      <mat-label for="available">Available</mat-label>
+      <mat-select required id="available" class="form-control" formControlName="available"
+                  [(value)]="companyLaptop.available">
+        <mat-option value="true">true</mat-option>
+        <mat-option value="false">false</mat-option>
+      </mat-select>
+      <mat-error>
+        Select <strong>true</strong> or <strong>false</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <br>
+
+    <mat-form-field appearance="fill">
+      <mat-label for="brandAndType">Brand and type</mat-label>
+      <input id="brandAndType" required matInput class="form-control" formControlName="brandAndType"
+             value="{{companyLaptop.brandAndType}}">
+      <mat-error>
+        Brand and type is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <br>
+
+    <mat-form-field appearance="fill">
+      <mat-label for="memory">Memory</mat-label>
+      <input id="memory" required matInput class="form-control" formControlName="memory"
+             value="{{companyLaptop.memory}}">
+      <mat-error>
+        Memory is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <br>
+
+    <mat-form-field appearance="fill">
+      <mat-label for="diskspace">Diskspace</mat-label>
+      <input id="diskspace" required matInput class="form-control" formControlName="diskspace"
+             value="{{companyLaptop.diskspace}}">
+      <mat-error>
+        Diskspace is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <br>
+
+    <mat-form-field appearance="fill">
+      <mat-label for="firstOperatingSystem">First operating system</mat-label>
+      <mat-select required id="firstOperatingSystem" class="form-control" formControlName="firstOperatingSystem"
+                  [(value)]="companyLaptop.firstOperatingSystem">
+        <mat-option *ngFor="let os of operatingSystemsOptions" [value]="os" [label]="operatingSystems[os]">{{os}}</mat-option>
+      </mat-select>
+      <mat-error>
+        First operating system is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <br>
+
+    <mat-form-field appearance="fill">
+      <mat-label for="secondOperatingSystem">Second operating system</mat-label>
+      <mat-select id="secondOperatingSystem" class="form-control" formControlName="secondOperatingSystem"
+                  [(value)]="companyLaptop.secondOperatingSystem">
+        <mat-option *ngFor="let os of operatingSystemsOptions" [value]="os" [label]="operatingSystems[os]">{{os}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button mat-dialog-close>Cancel</button>
+  <button mat-raised-button mat-dialog-close color="primary" (click)="updateCompanyLaptop()">Save</button>
+</div>

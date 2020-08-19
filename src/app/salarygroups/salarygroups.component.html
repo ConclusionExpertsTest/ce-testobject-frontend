@@ -1,0 +1,61 @@
+<div *ngIf="observableSalaryGroups | async as observableSalaryGroups else salaryGroupsEmpty"
+     class="cl-div">
+
+  <button (click)="refresh()" mat-icon-button color="primary" aria-label="Refresh table content">
+    <mat-icon>refresh</mat-icon>
+  </button>
+
+  <mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Conclusion" #input>
+  </mat-form-field>
+
+  <mat-table class="lessons-table mat-elevation-z8" [dataSource]="salaryGroups">
+
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+      <mat-cell class="duration-cell"
+                *matCellDef="let sg">{{sg.id}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="salaryGroupCode">
+      <mat-header-cell *matHeaderCellDef>Salary group code</mat-header-cell>
+      <mat-cell class="duration-cell"
+                *matCellDef="let sg">{{sg.salaryGroupCode}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="minAmount">
+      <mat-header-cell *matHeaderCellDef>Minimum amount</mat-header-cell>
+      <mat-cell class="duration-cell"
+                *matCellDef="let sg">{{sg.minAmount}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="maxAmount">
+      <mat-header-cell *matHeaderCellDef>Maximum amount</mat-header-cell>
+      <mat-cell class="duration-cell"
+                *matCellDef="let sg">{{sg.maxAmount}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+      <mat-cell *matCellDef="let wc">
+        <button mat-icon-button aria-label="Edit companylaptop" (click)="openSgDialog(wc)">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+  </mat-table>
+
+  <!-- not working for now!
+  <mat-paginator [pageSizeOptions]="[5, 10, 15]"></mat-paginator>-->
+
+</div>
+
+<ng-template #salaryGroupsEmpty> No working conditions found - dit you start the working-conditions-application
+  backend?
+</ng-template>

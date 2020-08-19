@@ -1,0 +1,85 @@
+<div *ngIf="observableCompanyLaptops | async as observableCompanyLaptops else companyLaptopsEmpty"
+     class="cl-div">
+
+  <button (click)="refresh()" mat-icon-button color="primary" aria-label="Refresh table content">
+    <mat-icon>refresh</mat-icon>
+  </button>
+
+  <mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Conclusion" #input>
+  </mat-form-field>
+
+  <mat-table class="lessons-table mat-elevation-z8" [dataSource]="companyLaptops">
+
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+      <mat-cell class="duration-cell"
+                *matCellDef="let cl">{{cl.id}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="companyLaptopTypes">
+      <mat-header-cell *matHeaderCellDef>Company laptop type</mat-header-cell>
+      <mat-cell class="duration-cell"
+                *matCellDef="let cl">{{cl.companyLaptopTypes}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="available">
+      <mat-header-cell *matHeaderCellDef>Available</mat-header-cell>
+      <mat-cell class="duration-cell"
+                *matCellDef="let cl">{{cl.available}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="brandAndType">
+      <mat-header-cell *matHeaderCellDef>Brand and model</mat-header-cell>
+      <mat-cell class="duration-cell"
+                *matCellDef="let cl">{{cl.brandAndType}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="memory">
+      <mat-header-cell *matHeaderCellDef>Memory</mat-header-cell>
+      <mat-cell class="duration-cell"
+                *matCellDef="let cl">{{cl.memory}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="diskspace">
+      <mat-header-cell *matHeaderCellDef>Diskspace</mat-header-cell>
+      <mat-cell class="duration-cell"
+                *matCellDef="let cl">{{cl.diskspace}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="firstOperatingSystem">
+      <mat-header-cell *matHeaderCellDef>First operating system</mat-header-cell>
+      <mat-cell class="duration-cell"
+                *matCellDef="let cl">{{cl.firstOperatingSystem}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="secondOperatingSystem">
+      <mat-header-cell *matHeaderCellDef>Second operating system</mat-header-cell>
+      <mat-cell class="duration-cell"
+                *matCellDef="let cl">{{cl.secondOperatingSystem}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+      <mat-cell *matCellDef="let cl">
+        <button mat-icon-button aria-label="Edit companylaptop" (click)="openClDialog(cl)">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+  </mat-table>
+
+  <!-- not working for now!
+  <mat-paginator [pageSizeOptions]="[5, 10, 15]"></mat-paginator>-->
+
+</div>
+
+<ng-template #companyLaptopsEmpty> No working conditions found - dit you start the working-conditions-application
+  backend?
+</ng-template>
