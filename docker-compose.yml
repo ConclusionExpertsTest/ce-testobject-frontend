@@ -1,7 +1,6 @@
 version: '3.5'
 services:
     ce-testobject-frontend:
-      container_name: ce-testobject-frontend
       build: .
       ports:
-        - "4200:4200"
+        - "8081:80"
